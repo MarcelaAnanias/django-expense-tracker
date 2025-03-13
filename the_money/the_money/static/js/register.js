@@ -3,14 +3,29 @@ const FeedBackArea = document.querySelector(".invalid_feedback");
 const emailField = document.querySelector("#emailField");
 const emailFeedBackArea = document.querySelector(".emailFeedBackArea");
 const usernameSucessOutput = document.querySelector(".usernameSucessOutput")
+const passwordField = document.querySelector("#passwordField")
+const showPassword = document.querySelector(".showPassword")
+
+const togglePasswordVisibility = (e) => {
+    if (showPassword.textContent === "SHOW"){
+        showPassword.textContent = "HIDE"
+        passwordField.setAttribute("type", "text")
+    } else {
+        showPassword.textContent = "SHOW"
+        passwordField.setAttribute("type", "password")
+    }
+};
+
+showPassword.addEventListener("click", togglePasswordVisibility)
 
 usernameField.addEventListener("keyup", (e) => {
     console.log("777777", 7777777);
     const usernameVal = e.target.value;
     
     usernameSucessOutput.style.display = 'block';
-    usernameSucessOutput.textContent = `Checking ${usernameVal}`
+    usernameSucessOutput.textContent = `Checking the name, please wait...`
 
+    usernameField.classList.remove("is-valid");
     usernameField.classList.remove("is-invalid");
     FeedBackArea.style.display = "none";
 
@@ -23,6 +38,7 @@ usernameField.addEventListener("keyup", (e) => {
             .then((data) => {
             console.log('data', data)
             usernameSucessOutput.style.display = 'none';
+            usernameField.classList.add("is-valid");
             if(data.username_error) {
                 usernameField.classList.add("is-invalid");
                 FeedBackArea.style.display = "block";
@@ -37,6 +53,7 @@ usernameField.addEventListener("keyup", (e) => {
 emailField.addEventListener("keyup", (e) => {
     const emailVal = e.target.value;
 
+    emailField.classList.remove("is-valid");
     emailField.classList.remove("is-invalid");
     emailFeedBackArea.style.display = "none";
 
@@ -48,6 +65,7 @@ emailField.addEventListener("keyup", (e) => {
             .then((res) => res.json())
             .then((data) => {
             console.log('data', data)
+            emailField.classList.add("is-valid");
             if(data.email_error) {
                 emailField.classList.add("is-invalid");
                 emailFeedBackArea.style.display = "block";

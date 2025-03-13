@@ -12,3 +12,14 @@
       font-size: 3.5rem;
     }
   }
+
+  /*-------- REGISTER ---------*/
+
+  .showPassword {
+    cursor: pointer;
+    transition: all;
+  }
+
+  .showPassword:hover {
+    transform: scale(0.9);
+  }
