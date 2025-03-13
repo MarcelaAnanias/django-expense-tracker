@@ -6,7 +6,7 @@ const usernameSucessOutput = document.querySelector(".usernameSucessOutput")
 const passwordField = document.querySelector("#passwordField")
 const showPassword = document.querySelector(".showPassword")
 
-const togglePasswordVisibility = (e) => {
+const togglePasswordVisibility = () => {
     if (showPassword.textContent === "SHOW"){
         showPassword.textContent = "HIDE"
         passwordField.setAttribute("type", "text")

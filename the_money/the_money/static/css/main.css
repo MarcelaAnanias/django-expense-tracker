@@ -23,3 +23,7 @@
   .showPassword:hover {
     transform: scale(0.9);
   }
+
+  .messages {
+    padding: 0;
+  }
