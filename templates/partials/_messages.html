@@ -1,0 +1,18 @@
+
+{% if messages %}
+<ul class="messages" style="padding: 0;">
+    {% for message in messages %}
+    <div{% if message.tags %} class="alert alert-sm alert-{{ message.tags }}"{% endif %}>
+        {{ message }}
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<!--
+        #messages.success(request, 'Successfully registered')
+        #messages.warning(request,'Please, wait')
+        #messages.info(request,'Registration information')
+        #messages.error(request,'Error in registration')
+
+-->
