@@ -16,7 +16,8 @@
                     <form action="" method="post">
 
                         {% csrf_token %} 
-
+                        {% include 'partials/_messages.html' %}
+                        
                         <div class="form-group">
                             <input type="text" name="username" autocomplete="off" placeholder="Username" id="usernameField" class="form-control form-control-sm" value="{{fieldValues.username}}">
                         </div>
@@ -34,7 +35,7 @@
                         </div>
                         <input type="submit" value="Sign Up" class="btn btn-block btn-dark register-btn">
                     </form>
-                    {% include 'partials/_messages.html' %}
+                    
                 </div>
             </div>
         </div>
