@@ -33,3 +33,28 @@
     color: rgb(113, 112, 112);
     border: none;
   }
+
+    /*-------- USER PREFERENCES ---------*/
+
+    .t-preferences {
+      margin-bottom: 50px;
+    }
+
+    .select-preferences {
+      align-items: center;
+      border: 1px solid #343a40;
+      color: #55595c;
+      font-weight: 500;
+      padding: 0px 10px;
+    }
+
+    .btn-preferences {
+      width: 110px;
+      background-color: #343a40;
+      color: white;
+    }
+    .btn-preferences:hover {
+      border: 1px solid #343a40;
+      background-color: transparent;
+      color: #343a40;
+    }
