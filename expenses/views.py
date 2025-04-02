@@ -46,6 +46,7 @@ def add_expense(request):
     
 
 def edit_expense(request, id):
+    print(f"Editing expense with ID: {id}")
     expense=Expense.objects.get(pk=id)
     categories = Category.objects.all()
     context = {
