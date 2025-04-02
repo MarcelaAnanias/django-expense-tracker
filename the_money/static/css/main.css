@@ -13,48 +13,112 @@
     }
   }
 
+  /*-------- BASE ---------*/
+
+.btn-logout {
+    color: rgba(255, 255, 255, 0.625);
+    text-decoration: none;
+    background-color: transparent;
+    border: none;
+    padding-top: .715rem;
+    padding-bottom: .715rem;
+    text-transform: uppercase !important;
+    font-weight: 600;
+}
+.btn-logout:hover{
+  color: #f7f7f9;
+}
+
+.img-logout{
+  width: 18px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 2px;
+}
+
   /*-------- REGISTER ---------*/
 
-  .showPassword {
-    cursor: pointer;
-    transition: all;
-  }
+.t-register{
+  display: flex;
+  justify-content: center;
+}
 
-  .showPassword:hover {
-    transform: scale(0.9);
-  }
+.showPassword {
+  cursor: pointer;
+  transition: all;
+}
 
-  .messages {
-    padding: 0;
-  }
+.showPassword:hover {
+  transform: scale(0.9);
+}
 
-  .register-btn:disabled {
-    background-color: lightgray;
-    color: rgb(113, 112, 112);
-    border: none;
-  }
+.messages {
+  padding: 0;
+}
 
-    /*-------- USER PREFERENCES ---------*/
+.register-btn:disabled {
+  background-color: lightgray;
+  color: rgb(113, 112, 112);
+  border: none;
+}
 
-    .t-preferences {
-      margin-bottom: 50px;
-    }
+/*-------- LOGIN ---------*/
 
-    .select-preferences {
-      align-items: center;
-      border: 1px solid #343a40;
-      color: #55595c;
-      font-weight: 500;
-      padding: 0px 10px;
-    }
+.logo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 19px;
+}
 
-    .btn-preferences {
-      width: 110px;
-      background-color: #343a40;
-      color: white;
-    }
-    .btn-preferences:hover {
-      border: 1px solid #343a40;
-      background-color: transparent;
-      color: #343a40;
-    }
+.logo-auth{
+  width: 230px;
+  height: 190px;
+}
+
+.t-login{
+  display: flex;
+  justify-content: center;
+}
+
+/*-------- EXPENSES ---------*/
+
+.btn-add {
+  background-color: #343a40;
+  color: white;
+  padding: 10px 24px;
+}
+.btn-add:hover {
+  border: 1px solid #343a40;
+  background-color: transparent;
+  color: #343a40;
+}
+
+.page-location {
+  background-color: #f7f7f9;
+}
+
+ /*-------- USER PREFERENCES - GENERAL---------*/
+
+.t-preferences {
+    margin-bottom: 50px;
+}
+
+.select-preferences {
+    align-items: center;
+    border: 1px solid #343a40;
+    color: #55595c;
+    font-weight: 500;
+    padding: 0px 10px;
+}
+
+.btn-preferences {
+    width: 110px;
+    background-color: #343a40;
+    color: white;
+}
+.btn-preferences:hover {
+    border: 1px solid #343a40;
+    background-color: transparent;
+    color: #343a40;
+}

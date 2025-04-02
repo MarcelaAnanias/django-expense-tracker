@@ -11,7 +11,10 @@
             <div class="card p-3 mt-5">
                 <div classe="card-body">
                     <div class="card-title">
-                        <h4 class="mt-5 mb-4">Login to your account</h4>
+                        <div class="logo">
+                            <img src="{% static 'img/the_money.png' %}" class="logo-auth" alt="The Money">
+                        </div>
+                        <h4 class="mt-3 mb-4 t-login">Login to your account</h4>
                     </div>
         
                     <form action="{% url 'login' %}" method="post">

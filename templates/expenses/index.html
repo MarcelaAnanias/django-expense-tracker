@@ -1,24 +1,60 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-
-    <br>{% include 'partials/_messages.html' %}
-
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-10">
+                <nav ariel-label="breadcrumb">
+                    <ol class='breadcrumb page-location'>
+                        <li class="breadcrumb-item">
+                            <a href="{% url "expenses" %}">Expenses</a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page"> My Expenses</li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-2">
+                <a href="{% url 'add-expenses'%}" class="btn btn-primary btn-add">Add Expense</a>
+            </div>
+        </div>
+    </div>
     <div class="container">
-        <br><h1>Expense List<h1><br>
-            <ul class="list-group">
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-                <li class="list-group-item h4">Bought Beer</li>
-            </ul>
+        {% include "partials/_messages.html" %}
     </div>
 
-{% endblock %}
+    <div class="app-table">
+
+        <table class="table table-stripped table-hover mt-4">
+            <thead>
+                <tr>
+                    <th>Amount ({{currency}})</th>
+                    <th>Category</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+      
+            <tbody>
+                {% for expense in expenses %}
+                <tr>
+                    <td>{{expense.amount}}</td>
+                    <td>{{expense.category}}</td>
+                    <td>{{expense.description}}</td>
+                    <td>{{expense.date}}</td>
+      
+                    <td>
+                        <a href="{% url 'edit-expense' expense.id  %}" class="btn btn-secondary btn-sm">Edit</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    
+    
+
+
+{% endblock content %}

@@ -5,7 +5,7 @@
 <div class="container">
   <br>{% include 'partials/_messages.html' %}
 
-  <br><h1 class="t-preferences">Preferred Currency</h1>
+  <br><h2 class="t-preferences">Preferred Currency</h2>
   
   <form action="{% url 'preferences' %}" method="post">
     {% csrf_token %}

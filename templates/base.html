@@ -24,7 +24,8 @@
           {% csrf_token %} 
           <form action="{% url 'logout' %}" method="POST">
             {% csrf_token %}
-            <input class="text text-capitalize" type="submit" value="Sign out"/>
+            <input class="text text-capitalize btn-logout" type="submit" value="Sign out"/>
+            <img class="img-logout" src="static/img/logout.svg" alt="">
           </form>
         </li>
       </ul>

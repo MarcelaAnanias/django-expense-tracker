@@ -127,7 +127,7 @@ class LoginView(View):
             if user:
                 if user.is_active:
                     auth.login(request, user)
-                    messages.success(request, 'Welcome, '+user.username+'you are now logged in')
+                    messages.success(request, 'Welcome, '+user.username+' you are now logged in')
                     return redirect('expenses')
             
                 messages.error(request, 'Account is not active, please check your email')
