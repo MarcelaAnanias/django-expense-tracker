@@ -2,33 +2,37 @@
 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">
-          <span data-feather="home"></span>
-          Dashboard <span class="sr-only">(current)</span>
+      <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-3 text-muted">
+        <img class="home-icon" src="{% static 'img/home-icon.svg' %}" alt="">
+        <span> Home </span>
+        <a class=" align-items-center text-muted" href="#" aria-label="Add a new report">
+          <span data-feather="plus-circle"></span>
         </a>
-      </li>
+      </h6>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'expenses' %}">
+          <img class="icon-expenses" src="{% static 'img/expenses-icon.svg' %}" alt="">
           Expenses
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="#">
+          <img class="income-icon" src="{% static 'img/income-icon.svg' %}" alt="">
           Income
         </a>
       </li>
     </ul>
 
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <h6 class="sidebar-heading align-items-center px-3 mt-5 mb-3 text-muted">
+      <img class="summary-icon" src="{% static 'img/summary-icon.svg' %}" alt="">
       <span>Summary</span>
-      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+      <a class=" align-items-center text-muted" href="#" aria-label="Add a new report">
         <span data-feather="plus-circle"></span>
       </a>
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="#">
           Expenses Summary
         </a>
       </li>
@@ -40,21 +44,24 @@
       </li>
     </ul>
 
-    <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+    <h6 class="sidebar-heading align-items-center px-3 mt-5 mb-3 text-muted">
+      <img class="setting-icon" src="{% static 'img/setting-icon.svg' %}" alt="">
       <span>Settings</span>
-      <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
+      <a class="align-items-center text-muted" href="#" aria-label="Add a new report">
         <span data-feather="plus-circle"></span>
       </a>
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'preferences' %}">
+          <img class="general-icon" src="{% static 'img/general-icon.svg' %}" alt="">
           General
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
+          <img class="account-icon" src="{% static 'img/account-icon.svg' %}" alt="">
           Account
         </a>
       </li>

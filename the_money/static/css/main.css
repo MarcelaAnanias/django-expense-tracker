@@ -34,6 +34,11 @@
   align-items: center;
   cursor: pointer;
   margin-bottom: 2px;
+  margin-left: 5px;
+}
+
+.t-sidebar {
+  font-size: 18px !important;
 }
 
   /*-------- REGISTER ---------*/
@@ -56,10 +61,26 @@
   padding: 0;
 }
 
-.register-btn:disabled {
+.signup-btn {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.signup-btn:hover {
+  background-color: #d5bd96;
+  border: 1px solid #d5bd96;
+  color: #fff;
+}
+.signup-btn:disabled {
   background-color: lightgray;
   color: rgb(113, 112, 112);
   border: none;
+}
+
+.btn:focus, 
+.btn:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /*-------- LOGIN ---------*/
@@ -89,13 +110,60 @@
   padding: 10px 24px;
 }
 .btn-add:hover {
-  border: 1px solid #343a40;
-  background-color: transparent;
-  color: #343a40;
+  border: none;
+  background-color: #d5bd96;
+  border: 1px solid #d5bd96;
+  color: #fff;
 }
 
 .page-location {
   background-color: #f7f7f9;
+}
+
+ /*-------- SIDEBAR---------*/
+
+ .icon-expenses {
+    width: 22px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+ }
+
+ .general-icon {
+  width: 18px;
+  margin-bottom: 3px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+
+ .account-icon {
+  width: 18px;
+  margin-bottom: 6px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+ .setting-icon {
+  width: 18px;
+  margin-bottom: 6px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+ .home-icon {
+  width: 18px;
+  margin-bottom: 6px;
+  margin-right: 2px;
+  margin-left: 2px;
+}
+.summary-icon {
+ width: 18px;
+ margin-bottom: 6px;
+ margin-right: 2px;
+ margin-left: 2px;
+}
+.income-icon {
+ width: 20px;
+ margin-bottom: 3px;
+ margin-right: 3px;
+ margin-left: 2px;
 }
 
  /*-------- USER PREFERENCES - GENERAL---------*/
@@ -117,8 +185,10 @@
     background-color: #343a40;
     color: white;
 }
+
 .btn-preferences:hover {
-    border: 1px solid #343a40;
-    background-color: transparent;
-    color: #343a40;
+    border: 1px solid #d5bd96;
+    background-color: #d5bd96;
+    color: #fff;
 }
+

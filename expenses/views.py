@@ -3,14 +3,19 @@ from .models import Category, Expense  # Importa os modelos Category e Expense d
 from django.contrib.auth.decorators import login_required  # Importa um decorador para exigir login antes de acessar uma view.
 # Create your views here.
 from django.contrib import messages  # Importa o módulo para exibir mensagens no Django (ex: erro, sucesso).
+from django.core.paginator import Paginator
 
 @login_required(login_url='/authentication/login')
 def index(request): #def = public function
     categories = Category.objects.all()
     expenses = Expense.objects.filter(owner=request.user)
-
+    paginator = Paginator(expenses, 3)
+    page_number = request.GET.get('page')
+    page_obj = Paginator.get_page(paginator, page_number)
     context = {
-        'expenses':expenses
+
+        'expenses':expenses,
+        'page_obj': page_obj
     }
     return render(request, 'expenses/index.html', context)
 
@@ -46,7 +51,7 @@ def add_expense(request):
     
 
 def edit_expense(request, id):
-    print(f"Editing expense with ID: {id}")
+    print(f"Editing expense with ID: {id}") #Só pra ter certeza
     expense=Expense.objects.get(pk=id)
     categories = Category.objects.all()
     context = {
