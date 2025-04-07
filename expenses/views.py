@@ -3,17 +3,31 @@ from .models import Category, Expense  # Importa os modelos Category e Expense d
 from django.contrib.auth.decorators import login_required  # Importa um decorador para exigir login antes de acessar uma view.
 # Create your views here.
 from django.contrib import messages  # Importa o módulo para exibir mensagens no Django (ex: erro, sucesso).
+from django.contrib.auth.models import User
 from django.core.paginator import Paginator
+from django.http import JsonResponse
+import json
+
+def search_expense(request):
+    if request.method == 'POST':
+        search_str=json.loads(request.body).get('searchText') # Converte o JSON recebido e extrai o texto digitado no campo de busca
+        expenses = Expense.objects.filter(
+            amount__istartswith=search_str, owner=request.user) | Expense.objects.filter(
+            date__istartswith=search_str, owner=request.user) | Expense.objects.filter(
+            description__icontains=search_str, owner=request.user) | Expense.objects.filter(
+            category__icontains=search_str, owner=request.user)
+        data = expenses.values()
+        return JsonResponse(list(data), safe=False)      
+    
 
 @login_required(login_url='/authentication/login')
 def index(request): #def = public function
     categories = Category.objects.all()
     expenses = Expense.objects.filter(owner=request.user)
-    paginator = Paginator(expenses, 3)
-    page_number = request.GET.get('page')
-    page_obj = Paginator.get_page(paginator, page_number)
+    paginator = Paginator(expenses, 3) # Cria um objeto Paginator com a lista de despesas, dividindo em páginas de 3 itens cada
+    page_number = request.GET.get('page') # Obtém o número da página atual a partir da URL (ex: ?page=2, então page_number = 2)
+    page_obj = Paginator.get_page(paginator, page_number) # Busca os dados da página correspondente (se page_number = 2, pega os 3 itens da página 2)
     context = {
-
         'expenses':expenses,
         'page_obj': page_obj
     }

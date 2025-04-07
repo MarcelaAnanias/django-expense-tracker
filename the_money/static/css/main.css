@@ -41,6 +41,12 @@
   font-size: 18px !important;
 }
 
+.show-page {
+  color: #919aa1;
+  text-transform: uppercase !important;
+  font-size: 12px;
+}
+
   /*-------- REGISTER ---------*/
 
 .t-register{
@@ -118,6 +124,25 @@
 
 .page-location {
   background-color: #f7f7f9;
+}
+
+.no-results {
+  font-size: 18px;
+}
+
+.pages {
+  color: #fff;
+  background-color: #d5bd96;
+  font-size: 14px;
+  margin-top: 18px;
+  margin-left: 2px;
+  font-weight: 600;
+}
+
+.pages:hover {
+  color: #fff;
+  background-color: #343a40;
+  font-size: 14px;
 }
 
  /*-------- SIDEBAR---------*/

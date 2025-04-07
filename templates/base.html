@@ -18,7 +18,15 @@
   <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0 t-sidebar" href="#">The Money</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+      
+      {% if request.path == '/' %}
+        <input class="form-control form-control-dark w-100 searchField" type="text" placeholder="Search" aria-label="Search">
+      {% endif %}
+
+      {% if request.path != '/' %}
+        <div class="form-control form-control-dark w-100"></div>
+      {% endif %}
+
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
           {% csrf_token %} 
@@ -51,5 +59,6 @@
     <script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/searchExpenses.js' %}"></script>
   </body>
 </html>

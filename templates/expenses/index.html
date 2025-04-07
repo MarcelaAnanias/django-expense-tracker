@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load humanize %} <!-- Para adicionar o fltro do Amount -->
 {% load static %}
 
 {% block content %}
@@ -19,7 +20,7 @@
             </div>
         </div>
         <div class="container">
-            {% include "partials/_messages.html" %}
+            {% include "partials/_messages.html" %} {% if expenses.count %}
             
             <div class="app-table">
                 
@@ -37,7 +38,7 @@
                     <tbody>
                         {% for expense in page_obj %}
                         <tr>
-                            <td>{{expense.amount}}</td>
+                            <td> $ {{expense.amount}}</td>
                             <td>{{expense.category}}</td>
                             <td>{{expense.description}}</td>
                             <td>{{expense.date}}</td>
@@ -50,29 +51,59 @@
                     </tbody>
                 </table>
             </div>
-            
-            <div class ="">
-                Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-            </div>
 
-            <ul class="pagination align-right float-right mr-auto">
+            <p class="no-results mt-4" style="display: none;">No results </p>
+                <div class="table-output">
                 
-                {% if page_obj.has_previous %}
-                <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
-                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                    <table class="table table-stripped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Amount ({{currency}})</th>
+                                <th>Category</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody  class="table-body">
+                        </tbody>
+                    </table>
+                </div>
+            
+            <div class="pagination-container">
+                <div class ="show-page">
+                    Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+                </div>
+
+                <ul class="pagination align-right float-right mr-5">
+
+                    {% if page_obj.has_previous %}
+                    <!-- Link para a primeira página (sempre 1) -->
+                        <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}>
+                            <a class="page-link pages" href="?page=1">&laquo; 1</a>
+                        </li>
+                    <!-- Link para a página anterior -->
+                        <li class="page-item"> 
+                            <a class="page-link pages" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                        </li>
+                    {% endif %}
+                    
+                    {% if page_obj.has_next %}
+                    <!-- Link para a próxima página -->
+                        <li class="page-item"> 
+                            <a class="page-link pages" href="?page={{ page_obj.next_page_number }}">Next</a>
+                        </li>
+                    <!-- Link para a última página -->
+                        <li class="page-item"> 
+                            <a class="page-link pages" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a>
+                        </li>
+                    {% endif %}
+                    
+                </ul>
                 {% endif %}
-          
-                {% if page_obj.has_next %}
-                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
-                {% endif %}
-          
-            </ul>
+            </div>
         </div>
     </div>
-        
-        
-    
 
 
 {% endblock content %}
