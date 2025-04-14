@@ -15,7 +15,7 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-2 add-expense">
                 <a href="{% url 'add-expenses'%}" class="btn btn-primary btn-add">Add Expense</a>
             </div>
         </div>
@@ -43,8 +43,8 @@
                             <td>{{expense.description}}</td>
                             <td>{{expense.date}}</td>
                             
-                            <td>
-                                <a href="{% url 'edit-expense' expense.id  %}" class="btn btn-secondary btn-sm">Edit</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{% url 'edit-expense' expense.id  %}" class="btn btn-secondary btn-sm btn-edit">Edit</a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -74,36 +74,46 @@
                 <div class ="show-page">
                     Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                 </div>
-
-                <ul class="pagination align-right float-right mr-5">
-
-                    {% if page_obj.has_previous %}
-                    <!-- Link para a primeira página (sempre 1) -->
-                        <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}>
-                            <a class="page-link pages" href="?page=1">&laquo; 1</a>
-                        </li>
-                    <!-- Link para a página anterior -->
-                        <li class="page-item"> 
-                            <a class="page-link pages" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-                        </li>
-                    {% endif %}
-                    
-                    {% if page_obj.has_next %}
-                    <!-- Link para a próxima página -->
-                        <li class="page-item"> 
-                            <a class="page-link pages" href="?page={{ page_obj.next_page_number }}">Next</a>
-                        </li>
-                    <!-- Link para a última página -->
-                        <li class="page-item"> 
-                            <a class="page-link pages" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a>
-                        </li>
-                    {% endif %}
-                    
-                </ul>
+                <div class="">
+                    <ul class="pagination align-right float-right mr-4">
+    
+                        {% if page_obj.has_previous %}
+                        <!-- Link para a primeira página (sempre 1) -->
+                            <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}>
+                                <a class="page-link pages" href="?page=1">&laquo; 1</a>
+                            </li>
+                        <!-- Link para a página anterior -->
+                            <li class="page-item"> 
+                                <a class="page-link pages" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                            </li>
+                        {% endif %}
+                        
+                        {% if page_obj.has_next %}
+                        <!-- Link para a próxima página -->
+                            <li class="page-item"> 
+                                <a class="page-link pages" href="?page={{ page_obj.next_page_number }}">Next</a>
+                            </li>
+                        <!-- Link para a última página -->
+                            <li class="page-item"> 
+                                <a class="page-link pages" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a>
+                            </li>
+                        {% endif %}
+                        
+                    </ul>
+                </div>
                 {% endif %}
             </div>
         </div>
+        <div class="row no-wrap mt-5">
+            <div class="col-md-6 chart-container">
+                {{ plot_div|safe }}
+            </div>
+            <div class="col-md-6 chart-container">
+                {{ plot_line_div|safe }}
+            </div>
+        </div>
     </div>
+
 
 
 {% endblock content %}

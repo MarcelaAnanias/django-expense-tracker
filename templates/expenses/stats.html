@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-10">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="">Expenses Summary</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                        Summary
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="col-md-2">
+            <a href="/" class="btn btn-primary btn-add">BACK</a>
+        </div>
+
+    </div>
+
+    <div class="row align-center">
+        <div class="col-md-8">
+            {{ plot_div|safe }}
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

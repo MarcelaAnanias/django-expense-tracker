@@ -32,12 +32,14 @@
     </h6>
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
-        <a class="nav-link" href="#">
+        <a class="nav-link" href="{% url 'stats' %}">
+          <img class="summary-expense" src="{% static 'img/summary-expense.svg' %}" alt="">
           Expenses Summary
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
+          <img class="summary-income" src="{% static 'img/summary-income.svg' %}" alt="">
           <span data-feather="file-text"></span>
           Income Summary
         </a>

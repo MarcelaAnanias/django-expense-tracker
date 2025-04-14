@@ -15,7 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
   </head>
-  <body>
+  <body class="the-money">
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0 t-sidebar" href="#">The Money</a>
       
@@ -45,7 +45,7 @@
       <div class="row">
         {% include 'partials/_sidebar.html' %}
         
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
           {% block content %}{% endblock %}
         </main>
       </div>

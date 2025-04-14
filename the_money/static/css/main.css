@@ -13,10 +13,14 @@
     }
   }
 
+  .the-money {
+    background-color: #f1f1f1;
+  }
+
   /*-------- BASE ---------*/
 
 .btn-logout {
-    color: rgba(255, 255, 255, 0.625);
+    color: hwb(0 100% 0% / 0.625);
     text-decoration: none;
     background-color: transparent;
     border: none;
@@ -42,9 +46,11 @@
 }
 
 .show-page {
+  width: 250px;
   color: #919aa1;
   text-transform: uppercase !important;
   font-size: 12px;
+  margin-top: 10px
 }
 
   /*-------- REGISTER ---------*/
@@ -110,6 +116,10 @@
 
 /*-------- EXPENSES ---------*/
 
+.add-expense{
+  padding-left: 5px !important;
+}
+
 .btn-add {
   background-color: #343a40;
   color: white;
@@ -122,8 +132,25 @@
   color: #fff;
 }
 
-.page-location {
+.btn-edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 35px;
+  font-size: 11px;
+  border: 2px solid #d5bd96;
+  border-radius: 15px;
+}
+.btn-edit:hover{
+  border: 2px solid #343a40;
   background-color: #f7f7f9;
+}
+
+.page-location {
+  background-color: #ffffff;
+  margin-left: 12px;
+  box-shadow: rgba(9, 30, 66, 0.169) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
 .no-results {
@@ -133,16 +160,36 @@
 .pages {
   color: #fff;
   background-color: #d5bd96;
-  font-size: 14px;
-  margin-top: 18px;
-  margin-left: 2px;
+  font-size: 15px;
   font-weight: 600;
+  margin-right: 6px;
 }
 
 .pages:hover {
   color: #fff;
   background-color: #343a40;
   font-size: 14px;
+}
+
+.row.no-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.chart-container {
+  display: inline-block;
+  width: 100%;
+  padding: 0 15px; /* espaço lateral entre os gráficos */
+  box-sizing: border-box;
+  margin-bottom: 50px;
+  margin-top: 32px;
+  margin-left: 50px; /* usei para separar e alinhar no centro */
+}
+
+.js-plotly-plot{
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
  /*-------- SIDEBAR---------*/
@@ -189,6 +236,20 @@
  margin-bottom: 3px;
  margin-right: 3px;
  margin-left: 2px;
+
+}
+.summary-expense {
+ width: 21px;
+ margin-bottom: 3px;
+ margin-right: 1px;
+ margin-left: 2px;
+}
+
+.summary-income {
+ width: 19px;
+ margin-bottom: 3px;
+ margin-right: 3px;
+ margin-left: 4px;
 }
 
  /*-------- USER PREFERENCES - GENERAL---------*/
