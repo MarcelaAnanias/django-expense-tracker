@@ -1,5 +1,5 @@
 {% load static %}
-<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+<nav class="col-md-2 d-none d-md-block bg-dark sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
       <h6 class="sidebar-heading align-items-center px-3 mt-4 mb-3 text-muted">
@@ -11,13 +11,13 @@
       </h6>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'expenses' %}">
-          <img class="icon-expenses" src="{% static 'img/expenses-icon.svg' %}" alt="">
+          <img class="icon-expenses" src="{% static 'img/expense-icon.png' %}" alt="">
           Expenses
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img class="income-icon" src="{% static 'img/income-icon.svg' %}" alt="">
+          <img class="income-icon" src="{% static 'img/income-icon.png' %}" alt="">
           Income
         </a>
       </li>
@@ -33,13 +33,13 @@
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'stats' %}">
-          <img class="summary-expense" src="{% static 'img/summary-expense.svg' %}" alt="">
+          <img class="summary-expense" src="{% static 'img/summary-expense.png' %}" alt="">
           Expenses Summary
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
-          <img class="summary-income" src="{% static 'img/summary-income.svg' %}" alt="">
+          <img class="summary-income" src="{% static 'img/summary-income.png' %}" alt="">
           <span data-feather="file-text"></span>
           Income Summary
         </a>
@@ -56,16 +56,29 @@
     <ul class="nav flex-column mb-2">
       <li class="nav-item">
         <a class="nav-link" href="{% url 'preferences' %}">
-          <img class="general-icon" src="{% static 'img/general-icon.svg' %}" alt="">
+          <img class="general-icon" src="{% static 'img/general-icon.png' %}" alt="">
           General
         </a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">
           <span data-feather="file-text"></span>
-          <img class="account-icon" src="{% static 'img/account-icon.svg' %}" alt="">
+          <img class="account-icon" src="{% static 'img/account-icon.png' %}" alt="">
           Account
         </a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        {% csrf_token %} 
+        <form action="{% url 'logout' %}" method="POST">
+          {% csrf_token %}
+          <button type="submit" class="text text-capitalize btn-logout">
+            Sign out
+            <img class="img-logout" src="{% static 'img/logout.svg' %}" alt="Logout"/>
+          </button>
+        </form>
       </li>
     </ul>
   </div>

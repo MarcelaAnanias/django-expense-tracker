@@ -79,7 +79,7 @@ def index(request): #def = public function
             x=0.5
         )
     )
-    plot_div = plot(fig, output_type='div')
+    plot_div = plot(fig, output_type='div', config={'responsive': False})
 
     # Agrupar por categoria e data
     grouped_expenses = (
@@ -147,7 +147,7 @@ def index(request): #def = public function
         },
         width=520,
         height=530,
-        margin=dict(l=65, r=30, t=100, b=10),
+        margin=dict(l=65, r=30, t=100, b=20),
         plot_bgcolor='white',
         paper_bgcolor='white',
         showlegend=True,
@@ -171,7 +171,7 @@ def index(request): #def = public function
 
     )
 
-    plot_line_div = plot(line_fig, output_type='div')
+    plot_line_div = plot(line_fig, output_type='div', config={'responsive': False})
 
     context = {
         'expenses':expenses,

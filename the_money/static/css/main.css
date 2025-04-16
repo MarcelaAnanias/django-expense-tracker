@@ -14,35 +14,29 @@
   }
 
   .the-money {
-    background-color: #f1f1f1;
+    background-color: #f8f9fa;
   }
 
   /*-------- BASE ---------*/
 
-.btn-logout {
-    color: hwb(0 100% 0% / 0.625);
-    text-decoration: none;
-    background-color: transparent;
-    border: none;
-    padding-top: .715rem;
-    padding-bottom: .715rem;
-    text-transform: uppercase !important;
-    font-weight: 600;
-}
-.btn-logout:hover{
-  color: #f7f7f9;
+.navbar-brand {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
-.img-logout{
-  width: 18px;
-  align-items: center;
-  cursor: pointer;
-  margin-bottom: 2px;
-  margin-left: 5px;
+.fixed-top{
+  right: auto;
+  top: 5px;
+}
+
+.bg-dark {
+  background-color: #1a1a1a !important;
 }
 
 .t-sidebar {
+  display: flex;
   font-size: 18px !important;
+  align-items: flex-end;
 }
 
 .show-page {
@@ -50,7 +44,15 @@
   color: #919aa1;
   text-transform: uppercase !important;
   font-size: 12px;
-  margin-top: 10px
+  margin-top: 10px;
+  padding: 2px;
+}
+
+.logo-white {
+  width: 40px;
+  height: 30px;
+  margin-right: 8px;
+  padding: 2px 5px 2px 0;
 }
 
   /*-------- REGISTER ---------*/
@@ -116,41 +118,93 @@
 
 /*-------- EXPENSES ---------*/
 
-.add-expense{
-  padding-left: 5px !important;
+.t-index {
+  padding-left: 15px;
+  margin-top: 0;
+}
+
+.page-location {
+  padding: 4px 15px;
+}
+
+.add-expense {
+  padding-left: 30px !important;
+}
+
+.add-icon{
+  position: relative;
+  width: 16px;
+  right: 6px;
+  bottom: 2px;
 }
 
 .btn-add {
-  background-color: #343a40;
-  color: white;
+  border-radius: 8px;
+  border: 2px solid #343a40;
+  background-color: #fff;
+  color: #343a40;
   padding: 10px 24px;
 }
+
 .btn-add:hover {
   border: none;
   background-color: #d5bd96;
-  border: 1px solid #d5bd96;
+  border: 2px solid #d5bd96;
   color: #fff;
 }
 
+.btn-add .add-icon {
+  transition: all 0.2s ease;
+}
+
+.btn-add:hover .add-icon {
+  content: url("/static/img/add-icon-white.png");
+}
+
+.search-index{
+  padding-top: 15px !important;
+  height: 48px;
+  padding-left: 50px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.search-icon {
+  top: 30%;
+  position: absolute;
+  pointer-events: none; /* permite clicar no input mesmo em cima da imagem */
+  width: 20px;
+  left: 15px;
+}
+
+.btn-trash,
 .btn-edit {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100px;
-  height: 35px;
+  width: 36px;
+  height: 36px;
   font-size: 11px;
-  border: 2px solid #d5bd96;
-  border-radius: 15px;
-}
-.btn-edit:hover{
-  border: 2px solid #343a40;
-  background-color: #f7f7f9;
+  border: 1px solid #dbdfe4;
+  background-color: #fff;
+  border-radius: 8px;
+  gap: 10px;
 }
 
-.page-location {
-  background-color: #ffffff;
-  margin-left: 12px;
-  box-shadow: rgba(9, 30, 66, 0.169) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+.btn-edit:hover{
+  transition: all 0.2s ease;
+  border: 1px solid #20c997;
+  background-color: #20c997;
+}
+
+.btn-trash:hover{
+  transition: all 0.2s ease;
+  border: 1px solid #d9534f;
+  background-color: #d9534f;
+}
+
+.btn-edit img {
+  width: 21px;
 }
 
 .no-results {
@@ -159,33 +213,60 @@
 
 .pages {
   color: #fff;
-  background-color: #d5bd96;
+  background-color: #343a40;
   font-size: 15px;
   font-weight: 600;
   margin-right: 6px;
 }
 
 .pages:hover {
+  transition: all 0.2s ease;
   color: #fff;
-  background-color: #343a40;
+  background-color: #d5bd96;
   font-size: 14px;
+}
+
+.page-link {
+  display: inline !important;
+}
+
+.table {
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  padding-right: 15px;
+}
+
+.table th {
+  padding: 18px;
+  background-color: #fff;
+}
+
+.table td {
+  padding: 12px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9 !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff !important;
 }
 
 .row.no-wrap {
   display: flex;
   flex-wrap: nowrap;
+  width: 100%;
   justify-content: center;
-  gap: 20px;
+  padding: 0 6px;
+  gap: 15px !important;
 }
 
 .chart-container {
-  display: inline-block;
-  width: 100%;
-  padding: 0 15px; /* espaço lateral entre os gráficos */
+  flex: 0 0 auto; /* impede que o item cresça/diminua com base no container */
+  padding: 0 30px; /* espaço lateral entre os gráficos */
   box-sizing: border-box;
   margin-bottom: 50px;
-  margin-top: 32px;
-  margin-left: 50px; /* usei para separar e alinhar no centro */
+  margin-top: 30px;
 }
 
 .js-plotly-plot{
@@ -194,32 +275,53 @@
 
  /*-------- SIDEBAR---------*/
 
- .icon-expenses {
-    width: 22px;
-    margin-bottom: 2px;
-    margin-right: 2px;
+ .sidebar-sticky {
+  position: relative !important;
+  top: 0;
+  left: 6px;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+ .sidebar .nav-link {
+  font-weight: 600;
+  color: #fff !important;
+}
+
+.nav-link:hover{
+  background-color: #343a40;
+  border-radius: 8px;
+}
+
+.icon-expenses {
+  width: 18px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  margin-left: 2px;
  }
 
- .general-icon {
+.general-icon {
   width: 18px;
-  margin-bottom: 3px;
-  margin-right: 2px;
+  margin-bottom: 4px;
+  margin-right: 3px;
   margin-left: 2px;
 }
 
- .account-icon {
+.account-icon {
+  width: 17px;
+  margin-bottom: 6px;
+  margin-right: 3px;
+  margin-left: 3px;
+}
+.setting-icon {
   width: 18px;
   margin-bottom: 6px;
   margin-right: 2px;
   margin-left: 2px;
 }
- .setting-icon {
-  width: 18px;
-  margin-bottom: 6px;
-  margin-right: 2px;
-  margin-left: 2px;
-}
- .home-icon {
+.home-icon {
   width: 18px;
   margin-bottom: 6px;
   margin-right: 2px;
@@ -232,16 +334,16 @@
  margin-left: 2px;
 }
 .income-icon {
- width: 20px;
+ width: 18px;
  margin-bottom: 3px;
- margin-right: 3px;
+ margin-right: 4px;
  margin-left: 2px;
 
 }
 .summary-expense {
- width: 21px;
+ width: 18px;
  margin-bottom: 3px;
- margin-right: 1px;
+ margin-right: 4px;
  margin-left: 2px;
 }
 
@@ -249,7 +351,31 @@
  width: 19px;
  margin-bottom: 3px;
  margin-right: 3px;
- margin-left: 4px;
+ margin-left: 2px;
+}
+
+.btn-logout {
+  color: hwb(0 100% 0% / 0.625);
+  text-decoration: none;
+  background-color: transparent;
+  border: none;
+  padding-top: .715rem;
+  padding-bottom: .715rem;
+  text-transform: uppercase !important;
+  font-weight: 600;
+  margin-top: 50px;
+  font-size: 16px;
+}
+.btn-logout:hover{
+color: #f7f7f9;
+}
+
+.img-logout{
+  width: 20px;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 2px;
+  margin-left: 5px;
 }
 
  /*-------- USER PREFERENCES - GENERAL---------*/

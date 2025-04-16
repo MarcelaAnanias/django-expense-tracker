@@ -3,7 +3,8 @@
 {% load static %}
 
 {% block content %}
-    <div class="container mt-4">
+    <div class="container">
+        <h2 class="t-index">My Expenses</h2>
         <div class="row">
             <div class="col-md-10">
                 <nav ariel-label="breadcrumb">
@@ -15,16 +16,32 @@
                     </ol>
                 </nav>
             </div>
-            <div class="col-md-2 add-expense">
-                <a href="{% url 'add-expenses'%}" class="btn btn-primary btn-add">Add Expense</a>
+        </div>
+        {% include "partials/_messages.html" %} {% if expenses.count %}
+        <div class="row">
+            <div class="col-md-8">
+                <a href="{% url '' %}"></a>
             </div>
         </div>
+        <div class="row mt-3 align-items-center">
+            <div class="col-md-6 add-expense d-flex justify-content-start">
+                <a href="{% url 'add-expenses'%}" class="btn btn-primary btn-add">
+                    <img class="add-icon" src="{% static "img/add-icon.svg" %}" alt="">
+                    Add Expense
+                </a>
+            </div>
+            <div class="col-md-6 d-flex justify-content-end mt-3" style="padding-right: 30px">
+                <div class="form-group form-control-dark w-100 position-relative searchField">
+                    <img class="search-icon" src="{% static "img/search.svg" %}" alt="">
+                    <input type="text" class="form-control search-index" id="searchField" placeholder="Search">
+                </div>
+            </div>   
+        </div>
         <div class="container">
-            {% include "partials/_messages.html" %} {% if expenses.count %}
-            
+
             <div class="app-table">
                 
-                <table class="table table-stripped table-hover mt-4">
+                <table class="table table-striped table-hover mt-2">
                     <thead>
                         <tr>
                             <th>Amount ({{currency}})</th>
@@ -44,7 +61,12 @@
                             <td>{{expense.date}}</td>
                             
                             <td class="d-flex justify-content-center">
-                                <a href="{% url 'edit-expense' expense.id  %}" class="btn btn-secondary btn-sm btn-edit">Edit</a>
+                                <a href="{% url 'edit-expense' expense.id  %}" class="btn-edit mr-2">
+                                    <img src="{% static 'img/edit.svg' %}" alt="">
+                                </a>
+                                <a href="{% url 'expense-delete' expense.id  %}" class="btn-trash">
+                                    <img src="{% static 'img/delete.svg' %}" alt="">
+                                </a>
                             </td>
                         </tr>
                         {% endfor %}
@@ -75,7 +97,7 @@
                     Showing page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
                 </div>
                 <div class="">
-                    <ul class="pagination align-right float-right mr-4">
+                    <ul class="pagination align-right float-right">
     
                         {% if page_obj.has_previous %}
                         <!-- Link para a primeira página (sempre 1) -->

@@ -16,29 +16,19 @@
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
   </head>
   <body class="the-money">
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0 t-sidebar" href="#">The Money</a>
-      
-      {% if request.path == '/' %}
-        <input class="form-control form-control-dark w-100 searchField" type="text" placeholder="Search" aria-label="Search">
-      {% endif %}
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0 t-sidebar" href="#">
+        <img src="{% static "img/logo.png" %}" alt="" class="logo-white">
+        The Money
+      </a>
+      <!-- {% if request.path == '/' %}
+       <input class="form-control form-control-dark w-100 searchField" type="text" placeholder="Search" aria-label="Search">
+      {% endif %}-->
 
-      {% if request.path != '/' %}
+      <!--{% if request.path != '/' %}
         <div class="form-control form-control-dark w-100"></div>
-      {% endif %}
+      {% endif %}-->
 
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          {% csrf_token %} 
-          <form action="{% url 'logout' %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="text text-capitalize btn-logout">
-              Sign out
-              <img class="img-logout" src="{% static 'img/logout.svg' %}" alt="Logout"/>
-            </button>
-          </form>
-        </li>
-      </ul>
     </nav>
 
     <div class="container-fluid">
