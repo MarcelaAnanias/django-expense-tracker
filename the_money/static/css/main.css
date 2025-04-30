@@ -116,10 +116,10 @@
   justify-content: center;
 }
 
-/*-------- EXPENSES ---------*/
+/*-------- EXPENSES AND INCOME ---------*/
 
 .t-index {
-  padding-left: 15px;
+  padding-left: 14px;
   margin-top: 0;
 }
 
@@ -138,19 +138,81 @@
   bottom: 2px;
 }
 
+/* Export Button */ 
+.button-excel, .button-pdf, .button-csv {
+  position: relative;
+  width: 150px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  overflow: hidden;
+  font-size: 12px;
+  left: 7px;
+  border-radius: 2px;
+}
+
+.button-csv, .button__icon-csv, .button__text-csv, .button-pdf, .button__icon-pdf, .button__text-pdf, .button-excel, .button__icon-excel, .button__text-excel {
+  transition: all 0.3s;
+}
+
+.button-csv .button__text-csv, .button-pdf .button__text-pdf, .button-excel .button__text-excel  {
+  transform: translateX(22px);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button-csv .button__icon-csv, .button-pdf .button__icon-pdf, .button-excel .button__icon-excel {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: #343a40;;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-csv .svg, .button-pdf .svg, .button-excel .svg {
+  width: 20px;
+  fill: #fff;
+}
+
+.button-csv:hover {
+  background: #f8f9fa
+}
+
+.button-pdf:hover{
+  background: #f8f9fa;
+}
+
+.button-excel:hover{
+  background: #f8f9fa;
+}
+
+.button-csv:hover .button__text-csv, .button-pdf:hover .button__text-pdf, .button-excel:hover .button__text-excel {
+  color: transparent;
+}
+
+.button-csv:hover .button__icon-csv, .button-pdf:hover .button__icon-pdf, .button-excel:hover .button__icon-excel {
+  width: 148px;
+  transform: translateX(0);
+}
+
 .btn-add {
   border-radius: 8px;
-  border: 2px solid #343a40;
-  background-color: #fff;
-  color: #343a40;
+  background-color: #1a1a1a;
+  border: 2px solid #1a1a1a;
+  color: #fff;
   padding: 10px 24px;
 }
 
 .btn-add:hover {
   border: none;
-  background-color: #d5bd96;
-  border: 2px solid #d5bd96;
-  color: #fff;
+  border: 2px solid #343a40;
+  background-color: #fff;
+  color: #343a40;
 }
 
 .btn-add .add-icon {
@@ -158,7 +220,7 @@
 }
 
 .btn-add:hover .add-icon {
-  content: url("/static/img/add-icon-white.png");
+  content: url("/static/img/add-icon.svg");
 }
 
 .search-index{
@@ -193,14 +255,12 @@
 
 .btn-edit:hover{
   transition: all 0.2s ease;
-  border: 1px solid #20c997;
-  background-color: #20c997;
+  border: 2px solid #0eb9cb;
 }
 
 .btn-trash:hover{
   transition: all 0.2s ease;
-  border: 1px solid #d9534f;
-  background-color: #d9534f;
+  border: 2px solid #f33829;
 }
 
 .btn-edit img {
@@ -212,22 +272,26 @@
 }
 
 .pages {
-  color: #fff;
-  background-color: #343a40;
-  font-size: 15px;
+  color: #55595c;
+  border: 2px solid #dbdfe4;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: .765625rem;
+  text-transform: uppercase;
   font-weight: 600;
   margin-right: 6px;
 }
 
 .pages:hover {
   transition: all 0.2s ease;
-  color: #fff;
-  background-color: #d5bd96;
-  font-size: 14px;
+  border: 2px solid #343a40;
+  background-color: #fff;
+  color: #343a40;
 }
 
 .page-link {
   display: inline !important;
+  left:6px
 }
 
 .table {
@@ -236,16 +300,22 @@
 }
 
 .table th {
-  padding: 18px;
+  padding: 18px !important;
   background-color: #fff;
 }
 
 .table td {
-  padding: 12px;
+  padding: 10px;
+}
+
+.table td, .table th {
+  padding: 10px 20px;
+  vertical-align: middle;
+  border-top: 1px solid rgba(0, 0, 0, .05);
 }
 
 .table-striped tbody tr:nth-of-type(odd) {
-  background-color: #f9f9f9 !important;
+  background-color: #f9f9f9dc !important;
 }
 
 .table-striped tbody tr:nth-of-type(even) {
@@ -266,7 +336,7 @@
   padding: 0 30px; /* espaço lateral entre os gráficos */
   box-sizing: border-box;
   margin-bottom: 50px;
-  margin-top: 30px;
+  margin-top: 18px;
 }
 
 .js-plotly-plot{

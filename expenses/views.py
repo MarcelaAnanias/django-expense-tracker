@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect  # Importa funções para renderizar templates e redirecionar páginas.
 from .models import Category, Expense  # Importa os modelos Category e Expense do app atual.
 from django.contrib.auth.decorators import login_required  # Importa um decorador para exigir login antes de acessar uma view.
-# Create your views here.
+from userpreferences.models import UserPreference
 from django.contrib import messages  # Importa o módulo para exibir mensagens no Django (ex: erro, sucesso).
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 import json
 import datetime
 from django.db.models import Sum
@@ -15,6 +15,7 @@ from collections import defaultdict
 from django.db.models.functions import TruncDate
 import plotly.graph_objs as go
 from datetime import timedelta
+import csv
 
 
 def search_expense(request):
@@ -36,6 +37,7 @@ def index(request): #def = public function
     paginator = Paginator(expenses, 3) # Cria um objeto Paginator com a lista de despesas, dividindo em páginas de 3 itens cada
     page_number = request.GET.get('page') # Obtém o número da página atual a partir da URL (ex: ?page=2, então page_number = 2)
     page_obj = Paginator.get_page(paginator, page_number) # Busca os dados da página correspondente (se page_number = 2, pega os 3 itens da página 2)
+    currency = UserPreference.objects.get(user=request.user).currency
 
     # Gráfico aqui
     todays_date = datetime.date.today()
@@ -54,6 +56,7 @@ def index(request): #def = public function
         line=dict(color='white', width=2) #margem branca
     )
     )])
+    
     fig.update_layout(
          title={
             'text': '<span style="letter-spacing:2px; text-transform:uppercase;">Expenses per Category (last 3 months)</span>',
@@ -177,10 +180,12 @@ def index(request): #def = public function
         'expenses':expenses,
         'page_obj': page_obj,
         'plot_div': plot_div,
-        'plot_line_div': plot_line_div
+        'currency': currency,
+        'plot_line_div': plot_line_div,
     }
     return render(request, 'expenses/index.html', context)
 
+@login_required(login_url='/authentication/login')
 def add_expense(request):
     categories = Category.objects.all()  # Busca todas as categorias cadastradas no banco de dados.
     context = {
@@ -211,9 +216,8 @@ def add_expense(request):
        
        return redirect('expenses')
     
-
+@login_required(login_url='/authentication/login')
 def edit_expense(request, id):
-    print(f"Editing expense with ID: {id}") #Só pra ter certeza
     expense=Expense.objects.get(pk=id)
     categories = Category.objects.all()
     context = {
@@ -256,6 +260,7 @@ def delete_expense(request, id):
     messages.error(request, 'Expense removed')
     return redirect('expenses')
 
+@login_required(login_url='/authentication/login')
 def stats_view(request):
     todays_date = datetime.date.today()
     six_months_ago = todays_date-datetime.timedelta(days=30*3) # Define o intervalo de 6 meses
@@ -281,14 +286,14 @@ def stats_view(request):
         textfont=dict(color='white'), #cor da fonte
         marker=dict( #cores
         colors=['#027381', '#0eb9cb', '#ff6f61', '#f33829', '#440b11'],
-        line=dict(color='white', width=3) #margem branca
+        line=dict(color='white', width=2) #margem branca
     )
     )])
 
     fig.update_layout(
         title={
             'text': '<span style="letter-spacing:2px; text-transform:uppercase;">Expenses per Category (last 3 months)</span>',
-            'y': 0.95,
+            #'y': 0.95,
             'x': 0.43,
             'xanchor': 'center',
             'yanchor': 'top',
@@ -298,7 +303,7 @@ def stats_view(request):
                 color='#55595c',  # ou qualquer outra cor
             )
         },
-        width=1000,
+        width=1050,
         height=630,
         showlegend=True,
     )
@@ -306,5 +311,22 @@ def stats_view(request):
     plot_div = plot(fig, output_type='div')
 
     return render(request, 'expenses/stats.html', {'plot_div': plot_div})
+
+def export_csv(request):
+
+    response=HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = 'attachment; filename=Expense' + \
+        str(datetime.datetime.now())+'.csv'
+    
+    writer=csv.writer(response)
+    writer.writerow(['Amount', 'Descriptiom','Category', 'Date'])
+
+    expenses=Expense.objects.filter(owner=request.user)
+
+    for expense in expenses:
+        writer.writerow([expense.amount, expense.category, expense.description, expense.date])
+    return response
+    
+
 
 

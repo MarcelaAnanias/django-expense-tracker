@@ -1,30 +1,30 @@
-
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} 
+{% block content %}
 
 <div class="container">
   <div class="d-flex justify-content-between align-items-center">
-    <h2 class="t-index m-0">Edit Expense</h2>
+    <h2 class="t-index m-0">Edit Income</h2>
   </div>
   <div class="row">
     <div class="col-md-10">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="{% url 'expenses'%}">Expenses</a>
+            <a href="{% url 'income' %}">Income</a>
           </li>
-          <li class="breadcrumb-item active" aria-current="page">Edit Expenses</li>
+          <li class="breadcrumb-item active" aria-current="page">Edit Income</li>
         </ol>
       </nav>
     </div>
 
     <div class="col-md-2">
-      <a href="{% url 'expense-delete' expense.id %}" class="btn btn-danger btn--sm"> Delete </a>
+      <a href="#" class="btn btn-danger btn--sm"> Delete </a>
     </div>
   </div>
 
   <div class="card">
     <div class="card-body">
-      <form action="{% url 'edit-expense' expense.id %}" method="post">
+      <form action="{% url 'edit-income' income.id %}" method="post">
         
         {% include 'partials/_messages.html'%} {% csrf_token %}
 
@@ -37,17 +37,17 @@
           <input type="text" class="form-control form-control-sm" name="description" value="{{values.description}}"/>
         </div>
         <div class="form-group">
-          <label for="">Category</label>
-          <select class="form-control" name="category">
-            <option selected name="category" value="{{values.category}}">{{values.category}}</option>
-            {% for category in categories%}
-            <option name="category" value="{{category.name}}">{{category.name}}</option>
+          <label for="">Source</label>
+          <option selected name="source" value="{{values.source}}">{{values.source}}</option>
+          <select class="form-control" name="source">
+            {% for source in sources %}
+            <option name="source" value="{{source.name}}">{{source.name}}</option>
             {% endfor %}
           </select>
         </div>
         <div class="form-group">
-          <label for="">Date of Expense</label>
-          <input type="date" value="{{values.date | date:'Y-m-d' }}" class="form-control form-control-sm" name="expense_date"/>
+          <label for="">Date of Income</label>
+          <input type="date" value="{{values.date | date:'Y-m-d' }}" class="form-control form-control-sm" name="income_date"/>
         </div>
 
         <input type="submit" value="Update" class="btn btn-primary btn-primary-sm mt-3"/>
@@ -58,4 +58,3 @@
 </div>
 
 {% endblock %}
-

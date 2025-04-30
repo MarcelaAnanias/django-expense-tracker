@@ -2,14 +2,21 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="container mt-4">
-  <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item">
-        <a href="{% url 'expenses'%}">Expenses</a>
-      </li>
-      <li class="breadcrumb-item active" aria-current="page">Add Expenses</li>
-    </ol>
-  </nav>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="t-index m-0">Add Expense</h2>
+  </div>
+  <div class="row">
+    <div class="col-md-10">
+        <nav ariel-label="breadcrumb">
+            <ol class='breadcrumb page-location'>
+                <li class="breadcrumb-item">
+                    <a href="{% url "expenses" %}">Expenses</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page"> Add Expense</li>
+            </ol>
+        </nav>
+    </div>
+  </div>
 
   <div class="card">
     <div class="card-body">
@@ -28,6 +35,7 @@
         <div class="form-group">
           <label for="">Category</label>
           <select class="form-control" name="category">
+            <option selected name="category" value="{{category.name}}">{{category.name}}</option>
             {% for category in categories%}
             <option name="category" value="{{category.name}}">{{category.name}}</option>
             {% endfor %}
