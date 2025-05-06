@@ -100,18 +100,39 @@
             <div class="">
                 Showing page {{page_obj.number}} of {{ page_obj.paginator.num_pages }}
             </div>
-            <ul class="pagination align-right float-right mr-auto">
+            <ul class="pagination align-right float-right">
+    
                 {% if page_obj.has_previous %}
-                    <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}><a class="page-link" href="?page=1">&laquo; 1</a></li>
-                    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+                <!-- Link para a primeira página (sempre 1) -->
+                    <li {% if page_obj.number == 1 %} class="page-item active" {% endif %}>
+                        <a class="page-link pages" href="?page=1">&laquo; 1</a>
+                    </li>
+                <!-- Link para a página anterior -->
+                    <li class="page-item"> 
+                        <a class="page-link pages" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
                 {% endif %}
-
+                
                 {% if page_obj.has_next %}
-                    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
-                    <li class="page-item"> <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a></li>
+                <!-- Link para a próxima página -->
+                    <li class="page-item"> 
+                        <a class="page-link pages" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                <!-- Link para a última página -->
+                    <li class="page-item"> 
+                        <a class="page-link pages" href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages}} &raquo;</a>
+                    </li>
                 {% endif %}
-
+                
             </ul>
+        </div>
+    </div>
+    <div class="row no-wrap">
+        <div class="col-md-6 chart-container">
+            {{ plot_div|safe }}
+        </div>
+        <div class="col-md-6 chart-container">
+            {{ plot_line_div|safe }}
         </div>
     </div>
 </div>

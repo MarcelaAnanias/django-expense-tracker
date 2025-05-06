@@ -38,8 +38,8 @@
         </div>
         <div class="form-group">
           <label for="">Source</label>
-          <option selected name="source" value="{{values.source}}">{{values.source}}</option>
           <select class="form-control" name="source">
+            <option selected name="source" value="{{values.source}}">{{values.source}}</option>
             {% for source in sources %}
             <option name="source" value="{{source.name}}">{{source.name}}</option>
             {% endfor %}

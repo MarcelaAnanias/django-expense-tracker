@@ -52,7 +52,7 @@ def index(request): #def = public function
         hole=0.3, #donalts
         textfont=dict(color='white'),
         marker=dict( #cores
-        colors=['#027381', '#0eb9cb', '#ff6f61', '#f33829', '#440b11'],
+        colors=['#ff3c4b', '#ff717c', '#ffa1a8', '#ffd0d3', '#ffe9eb'],
         line=dict(color='white', width=2) #margem branca
     )
     )])
@@ -115,11 +115,11 @@ def index(request): #def = public function
     line_fig = go.Figure()
 
     category_colors = {
-        'Clothes and Accessories': '#f33829',  
-        'Restaurants': '#027381',   
-        'Insurance': '#ff7751',
-        'Travel': '#0eb9cb',
-        'Fixed Expenses': '#440b11'
+        'Clothes and Accessories': '#ffd0d3',  
+        'Restaurants': '#ff3c4b',   
+        'Insurance': '#ffa1a8',
+        'Travel': '#ff717c',
+        'Fixed Expenses': '#ffe9eb'
     }
 
     # Criação dos traços com cor fixa
@@ -285,7 +285,7 @@ def stats_view(request):
         textinfo='percent+label',
         textfont=dict(color='white'), #cor da fonte
         marker=dict( #cores
-        colors=['#027381', '#0eb9cb', '#ff6f61', '#f33829', '#440b11'],
+        colors=['#ff3c4b', '#ff717c', '#ffa1a8', '#ffd0d3', '#ffe9eb'],
         line=dict(color='white', width=2) #margem branca
     )
     )])
